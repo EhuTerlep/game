@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script src="p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+     var w = window.innerWidth;
+    var h = window.innerHeight;
+    var posX = w/2
+    var posY = h/2
+      function setup() {
+        createCanvas(w,h)
+      }
+      function draw(){
+        background(255);
+        rect(posX,posY,100,100,20);
+        //rect value 1 = starting pos of x
+      //rect value 2 = starting pos of y
+      //rect value 3 = width
+      //rect value 4 = height
+        fill(color('#a7d694'));
+        strokeWeight(0);
+        //hold w goes up stops at top
+     if ((keyIsDown(87)) && (posY > 0)){
+       posY -=10
+     }
+             //hold a goes left stops at left
+  if ((keyIsDown(65)) && (posX > 0)){
+       posX -=10
+     }
+             //hold d goes right stops at right
+     if ((keyIsDown(68)) && (posX < w-100 )){
+       posX +=10
+     }
+             //hold s goes down stops at bottom
+     if ((keyIsDown(83)) && (posY < h-100 )){
+       posY +=10
+     }
+      }
+     
+    </script>
+  </body>
+</html>
