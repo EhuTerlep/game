@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <script src ="p5.min.js"></script>
+  <style>
+     body{
+      overflow:hidden;
+      margin:0;
+      padding:0;
+    }
+  </style>
+  </head>
+  <body>
+    
+    <script>
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var ball = new ball();//I am creating a new object globally
+    var bball = new bball();
+    var d;
+    function setup() {
+      createCanvas(w,h);
+    }
+    
+    function draw() {
+      background(255);
+     ball.show();
+     ball.move();
+     bball.show();
+     bball.move();
+     bball.kill();
+     
+    }
+    
+    function ball() {
+      this.x = 100;
+      this.y = 100;
+      this.show = function() {
+        fill(color('red'));
+        ellipse(this.x,this.y,50,50);
+      };
+      this.move = function() {
+        if ((keyIsDown(68)) && (this.x < w-50)) {//Right Arrow
+          this.x += 10
+        }
+        if ((keyIsDown(65)) && (this.x > 0)) {//Left Arrow
+          this.x -= 10
+        }
+        if ((keyIsDown(87)) && (this.y > 0)) {//Up Arrow
+          this.y -= 10 ;
+        }
+        if ((keyIsDown(83)) && (this.y < h-50)) {//Down Arrow
+          this.y += 10 ;
+        }
+      }
+    }
+    //-----------------------------
+    function bball() {
+      this.x = 400;
+      this.y = 400;
+      this.show = function() {
+        fill(color('blue'));
+        ellipse(this.x,this.y,50,50);
+      };
+      this.move = function() {73
+        if ((keyIsDown(76)) && (this.x < w-50)) {//Right Arrow
+          this.x += 10
+        }
+        if ((keyIsDown(74)) && (this.x > 0)) {//Left Arrow
+          this.x -= 10
+        }
+        if ((keyIsDown(73)) && (this.y > 0)) {//Up Arrow
+          this.y -= 10 ;
+        }
+        if ((keyIsDown(75)) && (this.y < h-50)) {//Down Arrow
+          this.y += 10 ;
+        }
+      }
+      this.kill = function(){
+        d = dist(this.x,this.y,ball.x,ball.y);
+        if (d < 50){
+          noLoop();
+          window.alert("YOU LOSE")
+        }
+      }
+    }
+
+    </script>
+  </body>
+</html>
