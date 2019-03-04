@@ -16,6 +16,7 @@
     var h = window.innerHeight;
     var ball = new ball();//I am creating a new object globally
     var bball = new bball();
+    var spd = new spd();
     var d;
     function setup() {
       createCanvas(w,h);
@@ -28,28 +29,33 @@
      bball.show();
      bball.move();
      bball.kill();
-     
+     spd.speed();
+          spd.show();
+
     }
     
     function ball() {
       this.x = 100;
       this.y = 100;
+      this.l = 50;
+      this.w = 50;
+      this.m = 10;
       this.show = function() {
         fill(color('red'));
-        ellipse(this.x,this.y,50,50);
+        ellipse(this.x,this.y,this.l,this.w);
       };
       this.move = function() {
         if ((keyIsDown(68)) && (this.x < w-50)) {//Right Arrow
-          this.x += 10
+          this.x += this.m
         }
-        if ((keyIsDown(65)) && (this.x > 0)) {//Left Arrow
-          this.x -= 10
+        if ((keyIsDown(65)) && (this.x > 50)) {//Left Arrow
+          this.x -= this.m
         }
-        if ((keyIsDown(87)) && (this.y > 0)) {//Up Arrow
-          this.y -= 10 ;
+        if ((keyIsDown(87)) && (this.y > 50)) {//Up Arrow
+          this.y -= this.m ;
         }
         if ((keyIsDown(83)) && (this.y < h-50)) {//Down Arrow
-          this.y += 10 ;
+          this.y += this.m ;
         }
       }
     }
@@ -57,33 +63,70 @@
     function bball() {
       this.x = 400;
       this.y = 400;
+      this.l = 50;
+      this.w = 50;
+            this.m = 10;
       this.show = function() {
         fill(color('blue'));
-        ellipse(this.x,this.y,50,50);
+        ellipse(this.x,this.y,this.l,this.w);
       };
       this.move = function() {73
         if ((keyIsDown(76)) && (this.x < w-50)) {//Right Arrow
-          this.x += 10
+          this.x += this.m
         }
-        if ((keyIsDown(74)) && (this.x > 0)) {//Left Arrow
-          this.x -= 10
+        if ((keyIsDown(74)) && (this.x > 50)) {//Left Arrow
+          this.x -= this.m
         }
-        if ((keyIsDown(73)) && (this.y > 0)) {//Up Arrow
-          this.y -= 10 ;
+        if ((keyIsDown(73)) && (this.y > 50)) {//Up Arrow
+          this.y -= this.m ;
         }
         if ((keyIsDown(75)) && (this.y < h-50)) {//Down Arrow
-          this.y += 10 ;
+          this.y += this.m ;
         }
       }
       this.kill = function(){
         d = dist(this.x,this.y,ball.x,ball.y);
-        if (d < 50){
-          noLoop();
-          window.alert("YOU LOSE")
+        if (d < 30){
+         noLoop();
+         window.alert("Red , get better ur trash")
         }
       }
     }
-
+    
+    function spd() {
+      this.x = 300;
+      this.y = 300;
+       this.l = 50;
+      this.w = 50;
+      this.show = function() {
+        fill(color('yellow'));
+        ellipse(this.x,this.y,this.l,this.w);
+      };
+     this.speed = function(){
+        d = dist(this.x,this.y,ball.x,ball.y);
+                df = dist(this.x,this.y,bball.x,bball.y);
+        if (d < 50){
+         ball.m += 5
+          
+        }
+       if (ball.m > 10){
+         this.l = 1;
+          this.w = 1;
+          this.x = 0;
+          this.y = 0;
+       }
+       if (df < 50){
+         ball.m -= 5
+          
+        }
+        if (ball.m < 10){
+         this.l = 1;
+          this.w = 1;
+          this.x = 0;
+          this.y = 0;
+       }
+      }
+    }
     </script>
   </body>
 </html>
