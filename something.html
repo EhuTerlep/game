@@ -31,12 +31,15 @@
      bball.kill();
      spd.speed();
           spd.show();
-
+    var randX = random(-30,30);
+    var randY = random(-30,30);
+    spd.x += randX;
+    spd.y += randY;
     }
     
     function ball() {
-      this.x = 100;
-      this.y = 100;
+      this.x = 0;
+      this.y = 0;
       this.l = 50;
       this.w = 50;
       this.m = 10;
@@ -61,8 +64,8 @@
     }
     //-----------------------------
     function bball() {
-      this.x = 400;
-      this.y = 400;
+      this.x = w;
+      this.y = h;
       this.l = 50;
       this.w = 50;
             this.m = 10;
@@ -100,7 +103,7 @@
       this.w = 50;
       this.show = function() {
         fill(color('yellow'));
-        ellipse(this.x,this.y,this.l,this.w);
+      var e = ellipse(this.x,this.y,this.l,this.w);
       };
      this.speed = function(){
         d = dist(this.x,this.y,ball.x,ball.y);
@@ -112,8 +115,9 @@
        if (ball.m > 10){
          this.l = 1;
           this.w = 1;
-          this.x = 0;
-          this.y = 0;
+          this.x = 1;
+          this.y = 1;
+          
        }
        if (df < 50){
          ball.m -= 5
@@ -122,8 +126,25 @@
         if (ball.m < 10){
          this.l = 1;
           this.w = 1;
-          this.x = 0;
-          this.y = 0;
+          this.x = 1;
+          this.y = 1;
+          
+       }
+       if(this.x < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.x > w-50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.y < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+        if(this.y > h-50){
+         this.x = w/2
+         this.y = h/2
        }
       }
     }
