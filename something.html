@@ -17,6 +17,10 @@
     var ball = new ball();//I am creating a new object globally
     var bball = new bball();
     var spd = new spd();
+    var death = new death();
+        var death2 = new death2();
+                var death3 = new death3();
+        var death4 = new death4();
     var d;
     function setup() {
       createCanvas(w,h);
@@ -28,23 +32,48 @@
      ball.move();
      bball.show();
      bball.move();
-     bball.kill();
      spd.speed();
           spd.show();
+          death.speed();
+          death.show();
+          death2.speed();
+          death2.show();
+          death3.speed();
+          death3.show();
+          death4.speed();
+          death4.show();
+          
     var randX = random(-30,30);
     var randY = random(-30,30);
+     var randXx = random(-25,25);
+    var randYy = random(-25,25);
+     var randXx2 = random(-25,25);
+    var randYy2 = random(-25,25);
+   var randXx3 = random(-25,25);
+    var randYy3 = random(-25,25);
+     var randXx4 = random(-25,25);
+    var randYy4 = random(-25,25);
+    
     spd.x += randX;
     spd.y += randY;
+     death.x += randXx;
+    death.y += randYy;
+    death2.x += randXx2;
+    death2.y += randYy2;
+    death3.x += randXx3;
+    death3.y += randYy3;
+    death4.x += randXx4;
+    death4.y += randYy4;
     }
     
     function ball() {
-      this.x = 0;
-      this.y = 0;
+      this.x = 600;
+      this.y = 600;
       this.l = 50;
       this.w = 50;
       this.m = 10;
       this.show = function() {
-        fill(color('red'));
+        fill(color('purple'));
         ellipse(this.x,this.y,this.l,this.w);
       };
       this.move = function() {
@@ -87,20 +116,14 @@
           this.y += this.m ;
         }
       }
-      this.kill = function(){
-        d = dist(this.x,this.y,ball.x,ball.y);
-        if (d < 30){
-         noLoop();
-         window.alert("Red , get better ur trash")
-        }
-      }
+      
     }
     
     function spd() {
-      this.x = 300;
-      this.y = 300;
-       this.l = 50;
-      this.w = 50;
+      this.x = w/2;
+      this.y = h/2;
+       this.l = 25;
+      this.w = 25;
       this.show = function() {
         fill(color('yellow'));
       var e = ellipse(this.x,this.y,this.l,this.w);
@@ -108,9 +131,9 @@
      this.speed = function(){
         d = dist(this.x,this.y,ball.x,ball.y);
                 df = dist(this.x,this.y,bball.x,bball.y);
-        if (d < 50){
+        if (d < 30){
          ball.m += 5
-          
+          bball.m -= 5
         }
        if (ball.m > 10){
          this.l = 1;
@@ -119,9 +142,9 @@
           this.y = 1;
           
        }
-       if (df < 50){
+       if (df < 30){
          ball.m -= 5
-          
+          bball.m += 5
         }
         if (ball.m < 10){
          this.l = 1;
@@ -130,7 +153,32 @@
           this.y = 1;
           
        }
-       if(this.x < 50){
+
+      }
+    }
+    //--------------------------------------------
+    function death() {
+      this.x = w/2;
+      this.y = h/2;
+       this.l = 50;
+      this.w = 50;
+      this.show = function() {
+        fill(color('red'));
+      var e = ellipse(this.x,this.y,this.l,this.w);
+      };
+     this.speed = function(){
+        d = dist(this.x,this.y,ball.x,ball.y);
+                df = dist(this.x,this.y,bball.x,bball.y);
+        if (d < 40){
+         noLoop();
+          window.alert("purple looses")
+        }
+       if (df < 40){
+         noLoop();
+         window.alert("blue looses")
+          
+        }
+    if(this.x < 50){
          this.x = w/2
          this.y = h/2
        }
@@ -146,8 +194,133 @@
          this.x = w/2
          this.y = h/2
        }
+    
       }
     }
+    //--------------------------------------------
+function death2() {
+      this.x = w/2;
+      this.y = h/2;
+       this.l = 50;
+      this.w = 50;
+      this.show = function() {
+        fill(color('red'));
+      var e = ellipse(this.x,this.y,this.l,this.w);
+      };
+     this.speed = function(){
+        d = dist(this.x,this.y,ball.x,ball.y);
+                df = dist(this.x,this.y,bball.x,bball.y);
+        if (d < 40){
+         noLoop();
+          window.alert("purple looses")
+        }
+       if (df < 40){
+         noLoop();
+         window.alert("blue looses")
+          
+        }
+    if(this.x < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.x > w-50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.y < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+        if(this.y > h-50){
+         this.x = w/2
+         this.y = h/2
+       }
+    
+      }
+    }
+    //--------------------------------------------
+    function death3() {
+      this.x = w/2;
+      this.y = h/2;
+       this.l = 50;
+      this.w = 50;
+      this.show = function() {
+        fill(color('red'));
+      var e = ellipse(this.x,this.y,this.l,this.w);
+      };
+     this.speed = function(){
+        d = dist(this.x,this.y,ball.x,ball.y);
+                df = dist(this.x,this.y,bball.x,bball.y);
+        if (d < 40){
+         noLoop();
+          window.alert("purple looses")
+        }
+       if (df < 40){
+         noLoop();
+         window.alert("blue looses")
+          
+        }
+    if(this.x < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.x > w-50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.y < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+        if(this.y > h-50){
+         this.x = w/2
+         this.y = h/2
+       }
+    
+      }
+    }
+    //--------------------------------------------
+    function death4() {
+      this.x = w/2;
+      this.y = h/2;
+       this.l = 50;
+      this.w = 50;
+      this.show = function() {
+        fill(color('red'));
+      var e = ellipse(this.x,this.y,this.l,this.w);
+      };
+     this.speed = function(){
+        d = dist(this.x,this.y,ball.x,ball.y);
+                df = dist(this.x,this.y,bball.x,bball.y);
+        if (d < 40){
+         noLoop();
+          window.alert("purple looses")
+        }
+       if (df < 40){
+         noLoop();
+         window.alert("blue looses")
+          
+        }
+    if(this.x < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.x > w-50){
+         this.x = w/2
+         this.y = h/2
+       }
+       if(this.y < 50){
+         this.x = w/2
+         this.y = h/2
+       }
+        if(this.y > h-50){
+         this.x = w/2
+         this.y = h/2
+       }
+    
+      }
+    }
+    //--------------------------------------------
     </script>
   </body>
 </html>
